@@ -8,13 +8,28 @@ def index():
 
     if request.method == "POST":
         algorithm = request.form.get("algorithm")
-        n = request.form.get("n")
+        n = request.form.get("n")  # not used in Big-O strings, but captured
 
-        results = {
-            "best": "O(n)",
-            "average": "O(n log n)",
-            "worst": "O(n^2)"
-        }
+        if algorithm == "bubble":
+            results = {
+                "best": "O(n)",
+                "average": "O(n^2)",
+                "worst": "O(n^2)"
+            }
+        elif algorithm == "merge":
+            results = {
+                "best": "O(n log n)",
+                "average": "O(n log n)",
+                "worst": "O(n log n)"
+            }
+        elif algorithm == "quick":
+            results = {
+                "best": "O(n log n)",
+                "average": "O(n log n)",
+                "worst": "O(n^2)"
+            }
+        else:
+            results = None
 
     return render_template("index.html", results=results)
 
