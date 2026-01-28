@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algorithm Analyzer</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Algorithm Analyzer</h1>
+    <p class="subtitle">Time Complexity Visualizer</p>
+
+    <form method="POST">
+        <label>Select Algorithm</label>
+        <select name="algorithm" required>
+            <option value="">Choose one</option>
+            <option value="bubble">Bubble Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick">Quick Sort</option>
+        </select>
+
+        <label>Input Size (n)</label>
+        <input type="number" name="n" placeholder="e.g. 1000" required>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if results %}
+    <div class="results">
+        <p><strong>Best Case:</strong> {{ results.best }}</p>
+        <p><strong>Average Case:</strong> {{ results.average }}</p>
+        <p><strong>Worst Case:</strong> {{ results.worst }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
